@@ -174,37 +174,3 @@ function getDuplicates(arr) {
 function getUnique(arr) {
 	return arr.filter((e, i, a) => a.indexOf(e) === i)
 }
-
-/* while(true)
-    prompt.get([], (err, result) => {
-        if(result.link === "") break
-        if(err) continue
-        links.push(result.link)
-    })
-
-console.log(links) */
-
-/* prompt.get(["link"], function (err, result) {
-	if (err) return onErr(err)
-
-	console.log("Command-line input received:")
-	console.log("  link: " + result.link)
-    scrape()
-})
-
-function onErr(err) {
-	console.log(err)
-	return 1
-}
-
-async function scrape() {
-	const browser = await puppeteer.launch({})
-	const page = await browser.newPage()
-
-	await page.goto("https://www.pawpeds.com/db/?a=p&id=1058710&g=4&p=sib&o=elastic")
-	var element = await page.waitForSelector("body > div.centered > table > tbody > tr:nth-child(1)")
-	var text = await page.evaluate(element => element.textContent, element)
-	console.log(text)
-	browser.close()
-}
- */
