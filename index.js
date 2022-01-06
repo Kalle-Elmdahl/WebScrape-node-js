@@ -1,6 +1,8 @@
 const puppeteer = require("puppeteer")
 const prompt = require("prompt")
 
+const fs = require('fs')
+
 const baseURL = "https://www.pawpeds.com/db"
 let browser
 
@@ -23,7 +25,7 @@ async function init() {
 					name: "amount",
 					required: true,
 					message: "Maximalt 40 länkar",
-					conform: number => Number.isInteger(Number(number)) && Number(number) <= 40,
+					conform: number => Number.isInteger(Number(number)) && Number(number) <= 55,
 				},
 			])
 			.catch(() => {
@@ -92,7 +94,18 @@ async function init() {
 				.filter(entry => entry.generation != null),
 		}))
 
-		displayFinalData(finalData)
+        console.log("saving")
+
+        const jsonContent = JSON.stringify(finalData);        
+        fs.writeFile("output.json", jsonContent, 'utf8', (err) => {
+            if (err) {
+                console.log("An error occured while writing JSON Object to File.");
+                return console.log(err);
+            }
+        
+            console.log("JSON file has been saved.");
+        });
+		/* displayFinalData(finalData) */
 	} catch (e) {
 		console.log(e)
 	} finally {
@@ -101,6 +114,7 @@ async function init() {
 }
 
 async function getName(id) {
+    console.log("Getting name for id: " + id)
 	const page = await browser.newPage()
 
 	await page.goto(
