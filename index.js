@@ -24,7 +24,7 @@ async function init() {
 					description: "Hur många länkar",
 					name: "amount",
 					required: true,
-					message: "Maximalt 40 länkar",
+					message: "Maximalt 55 länkar",
 					conform: number => Number.isInteger(Number(number)) && Number(number) <= 55,
 				},
 			])
