@@ -11,6 +11,6 @@
   "license": "ISC",
   "dependencies": {
     "prompt": "^1.2.0",
-    "puppeteer": "^13.0.1"
+    "puppeteer": "^22.12.0"
   }
 }
